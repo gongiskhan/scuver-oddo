@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <function name="unlink_action_account_reports" model="ir.actions.report"/>
+<!--        <function name="unlink_action_account_share" model="ir.actions.server"/>-->
+    </data>
+</odoo>

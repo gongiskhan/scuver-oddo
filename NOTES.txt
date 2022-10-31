@@ -1,0 +1,9 @@
+docker exec -it --user=root odoo python3 -m pip install numpy
+
+https://hub.docker.com/_/odoo
+
+https://github.com/odoo/odoo
+
+https://www.odoo.com/documentation/12.0/developer/webservices/odoo.html
+
+https://apps.odoo.com/apps/modules/browse?author=TKOpen

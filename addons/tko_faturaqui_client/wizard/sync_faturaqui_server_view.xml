@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<odoo>
+    <record model="ir.ui.view" id="sync_faturaqui_server_wizard">
+        <field name="model">sync.faturaqui.server</field>
+        <field name="arch" type="xml">
+            <form string="Sync Server" version="7.0">
+                <group string="Sync" colspan="4">
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </group>
+
+                <footer>
+                    <button string="Sync" name="sync_server" type="object"
+                            class="oe_highlight"/>
+                    or
+                    <button string="Cancel" class="oe_link"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="sync_faturaqui_server_wizard_action" model="ir.actions.act_window">
+        <field name="name">Sync Server</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sync.faturaqui.server</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

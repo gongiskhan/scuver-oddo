@@ -1,0 +1,34 @@
+version: '3.1'
+services:
+  web:
+    image: odoo:latest
+    platform: linux/amd64
+    container_name: odoo
+    depends_on:
+      - mydb
+    ports:
+      - "8069:8069"
+    volumes:
+      - ./odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./addons:/var/lib/odoo/.local/share/Odoo/addons/16.0
+      - ./addons:/mnt/extra-addons
+    environment:
+      - HOST=mydb
+      - USER=odoo
+      - PASSWORD=myodoo
+  mydb:
+    image: postgres:13
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./odoo-db-data:/var/lib/postgresql/data/pgdata
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=myodoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+volumes:
+  odoo-web-data:
+  odoo-db-data:

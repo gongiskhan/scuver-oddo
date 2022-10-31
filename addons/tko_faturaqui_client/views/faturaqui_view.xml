@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="faturaqui_form" model="ir.ui.view">
+        <field name="name">faturaqui.form</field>
+        <field name="model">faturaqui</field>
+        <field name="arch" type="xml">
+            <form string="FaturAqui" create="false" delete="false">
+                <header>
+                    <button name="%(sync_faturaqui_server_wizard_action)d" string="Sync Invoices" type="action"
+                            class="oe_heighlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="server_url"/>
+                            <field name="client_token"/>
+                            <field name="use_webservice" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="name"/>
+                            <field name="version"/>
+                            <field name="software_certificate_number"/>
+                        </group>
+                    </group>
+                    <group string="Default Fields">
+                        <group>
+                            <field name="default_customer_at_self_billing_indicator" required="True"/>
+                        </group>
+                        <group>
+                            <field name="default_invoice_at_self_billing_indicator"/>
+                            <field name="default_invoice_at_cash_vat_scheme_indicator" required="True"/>
+                            <field name="default_invoice_at_third_parties_billing_indicator" required="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_faturaqui" model="ir.actions.act_window">
+        <field name="name">FaturAqui</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faturaqui</field>
+        <field name="view_id" ref="faturaqui_form"/>
+        <field name="res_id" ref="tko_faturaqui_client.faturaqui_main"/>
+    </record>
+
+    <record id="faturaqui_saft_form" model="ir.ui.view">
+        <field name="name">faturaqui.saft.form</field>
+        <field name="model">faturaqui.saft</field>
+        <field name="arch" type="xml">
+            <form string="FaturAqui SAF-T">
+                <header>
+                    <button name="generate_file" type="object" string="Generate File" class="oe_highlight" attrs="{'invisible':[('export_type', '=', 'e')]}"/>
+                    <button name="generate_xls" type="object" string="Generate XLS" class="oe_highlight" attrs="{'invisible':[('export_type', '!=', 'e')]}"
+                            help="Excel file of Invoices and Credit notes by building"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" invisible="0"/>
+                        <field name="year" required="1"/>
+                        <field name="export_type"/>
+                        <field name="month"
+                               attrs="{'invisible': [('type', '=', 'a')], 'required': [('type', '=', 'm')]}"/>
+                        <field name="type" invisible="1"/>
+                    </group>
+                    <group attrs="{'invisible': [('export_type', '=', 's')]}">
+                        <field name="start_date" attrs="{'required':[('export_type', '=', 'e')]}"/>
+                        <field name="end_date" attrs="{'required':[('export_type', '=', 'e')]}"/>
+                    </group>
+
+                    <group attrs="{'invisible': [('file', '=', False)]}">
+                        <field name="file" filename="filename"/>
+                        <field name="filename" invisible="0"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_faturaqui_saft_monthly" model="ir.actions.act_window">
+        <field name="name">FaturAqui File eFatura</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faturaqui.saft</field>
+        <field name="view_id" ref="faturaqui_saft_form"/>
+        <field name="res_id" ref="tko_faturaqui_client.faturaqui_saft_monthly"/>
+    </record>
+    <record id="action_faturaqui_saft_annual" model="ir.actions.act_window">
+        <field name="name">FaturAqui File SAF-T</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">faturaqui.saft</field>
+        <field name="view_id" ref="faturaqui_saft_form"/>
+        <field name="res_id" ref="tko_faturaqui_client.faturaqui_saft_annual"/>
+    </record>
+
+    <menuitem id="menu_faturaqui" name="FaturAqui" parent="account.menu_finance_configuration" sequence="100"/>
+    <menuitem id="menu_action_faturaqui" name="Information" sequence="10"
+              action="action_faturaqui" parent="menu_faturaqui"/>
+    <menuitem id="menu_action_faturaqui_saft_monthly" name="Files eFatura" sequence="20"
+              action="action_faturaqui_saft_monthly" parent="menu_faturaqui"/>
+    <menuitem id="menu_action_faturaqui_saft_annual" name="Files SAF-T" sequence="30"
+              action="action_faturaqui_saft_annual" parent="menu_faturaqui"/>
+</odoo>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="model">account.move</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <field name="to_check" position="after">
+                <field name="emit_einvoice"/>
+            </field>
+<!--            <xpath expr="//button[@name='action_invoice_sent'][1]" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='action_invoice_sent'][2]" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//button[@name='preview_invoice']" position="attributes">-->
+<!--                <attribute name="invisible">1</attribute>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//h1[hasclass('mt0')]" position="replace">-->
+<!--                <h1 class="mt0">-->
+<!--                    <div>-->
+<!--                        <div class="oe_form_box_info oe_text_center">-->
+<!--                            &lt;!&ndash;bg-info &ndash;&gt;-->
+<!--&lt;!&ndash;                            <label for="number" string="Draft. This is not an invoice yet" class="oe_form_box_info oe_text_center"&ndash;&gt;-->
+<!--&lt;!&ndash;                                   attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','!=','out_invoice')]}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <label for="number" string="Draft. This is not a credit note yet" class="oe_form_box_info oe_text_center"&ndash;&gt;-->
+<!--&lt;!&ndash;                                   attrs="{'invisible': ['|',('state','not in',('draft',)), ('type','!=','out_refund')]}"/>&ndash;&gt;-->
+<!--                        </div>-->
+<!--&lt;!&ndash;                        <field name="number" readonly="1" class="oe_inline" attrs="{'invisible': [('state','in',('draft',))]}"/>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </h1>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//sheet/group[1]/group[2]" position="inside">-->
+<!--                <field name="invoice_attachment_id" context="{'default_res_model': 'account.move', 'default_res_id': id}"-->
+<!--                       domain="[('res_model', '=', 'account.move'), ('res_id', '=', id), ('type', '=', 'binary')]"-->
+<!--                       attrs="{'invisible': [('server_reference', '=', False)]}"/>-->
+<!--            </xpath>-->
+            <xpath expr="//tree/field[@name='tax_ids']" position="after">
+                <field name="tax0_reason_id"/>
+            </xpath>
+            <xpath expr="//page[@name='other_info']" position="after">
+                <page string="Printing Options" name="print_options" attrs="{'invisible': [('state', '=', 'draft')]}">
+                    <group>
+                        <field name="copies"/>
+                        <group col="8">
+                            <label for="print_original" string="I confirm that I have the original document with me and I want to print the original again:"/>
+                            <field name="print_original" nolabel="1" help="I confirm that I have the original document with me, I will not give it to the client"/>
+                        </group>
+                        <group>
+                            <field name="reason_original" attrs="{'invisible': [('print_original', '=', False)], 'required': [('print_original', '=', True)]}"/>
+                        </group>
+                    </group>
+                </page>
+                <page string="FaturAqui" name="faturaqui">
+                    <group>
+                        <field name="server_reference"/>
+                        <field name="reason_cancel" readonly="1" attrs="{'invisible': [('state', '!=', 'cancel')]}"/>
+                        <field name="show_cancel_button" invisible="1"/>
+                    </group>
+                    <group string="AT Fields" name="at_fields">
+                        <field name="at_invoice_type"/>
+                        <field name="at_payment_mechanism"/>
+                        <field name="at_self_billing_indicator" required="1"/>
+                        <field name="at_cash_vat_scheme_indicator" required="1"/>
+                        <field name="at_third_parties_billing_indicator" required="1"/>
+                        <field name="at_hash" invisible="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

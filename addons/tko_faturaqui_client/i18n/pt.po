@@ -1,0 +1,911 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* tko_faturaqui_client
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-21 16:22+0000\n"
+"PO-Revision-Date: 2019-08-21 16:22+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tko_faturaqui_client
+#: model:mail.template,subject:tko_faturaqui_client.email_template_edi_invoice
+msgid "${object.company_id.name} Invoice (Ref ${object.number or 'n/a'})"
+msgstr "${object.company_id.name} Fatura (Ref ${object.number or 'n/a'})"
+
+#. module: tko_faturaqui_client
+#: model:mail.template,body_html:tko_faturaqui_client.email_template_edi_invoice
+msgid "<div style=\"margin: 0px; padding: 0px;\">\n"
+"    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
+"        Dear ${object.partner_id.name}\n"
+"        % if object.partner_id.parent_id:\n"
+"            (${object.partner_id.parent_id.name})\n"
+"        % endif\n"
+"        <br/><br/>\n"
+"        Here is your\n"
+"        % if object.number:\n"
+"            invoice <strong>${object.number}</strong>\n"
+"        % else:\n"
+"            invoice\n"
+"        %endif\n"
+"        % if object.origin:\n"
+"            (with reference: ${object.origin})\n"
+"        % endif\n"
+"        amounting in <strong>${format_amount(object.amount_total, object.currency_id)}</strong>\n"
+"        from ${object.company_id.name}.\n"
+"        % if object.state=='paid':\n"
+"            This invoice is already paid.\n"
+"        % else:\n"
+"            Please remit payment at your earliest convenience.\n"
+"        % endif\n"
+"        <br/><br/>\n"
+"        Do not hesitate to contact us if you have any question.\n"
+"    </p>\n"
+"</div>\n"
+"            "
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax__at_tax_code
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__at_tax0_code
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_template__at_tax_code
+msgid "AT Code"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax__at_tax_country_region
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_template__at_tax_country_region
+msgid "AT Country Region"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.product_template_form_view
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_invoice_line_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_partner_property_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_tax_form
+msgid "AT Fields"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_journal__at_origin
+msgid "AT Invoice Origin"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__at_invoice_type
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_journal__at_type_out_invoice
+msgid "AT Invoice Type"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__at_payment_mechanism
+msgid "AT Payment Mechanism"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_product__at_product_type
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_template__at_product_type
+msgid "AT Product Type"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_line__at_settlement_amount
+msgid "AT Settlement Amount"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax__at_tax_type
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_template__at_tax_type
+msgid "AT Type"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_line__at_unit_price
+msgid "AT Unit Price"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:41
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice__at_cash_vat_scheme_indicator
+#, python-format
+msgid "Accession indicator to the VAT cash method.\n"
+"Should be filled in with 'Yes' in case the method has been accessed and with 'No' if not."
+msgstr "Indicador da existência de adesão ao regime de IVA de Caixa.\nDeve ser preenchido com 'Sim' se houver adesão e com 'Não' no caso contrário."
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_account_invoice_series_tree
+msgid "Account Journal"
+msgstr "Diário Contabilístico"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_res_partner__allows_edocs
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_res_users__allows_edocs
+msgid "Allows Electronic Documents"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:faturaqui.saft,type:0
+msgid "Annual"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:27
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "April"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:104
+#, python-format
+msgid "Asked for the invoice's original"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_ir_attachment
+msgid "Attachment"
+msgstr "Anexo"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:31
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "August"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.account_invoice_cancel_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_account_invoice_cancel
+#: model:ir.model,name:tko_faturaqui_client.model_account_invoice_cancel
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.account_invoice_cancel_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form_cancel_inherit
+msgid "Cancel Invoice"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__reason_cancel
+msgid "Cancel Reason"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice.refund,filter_refund:0
+msgid "Cancel: create credit note and reconcile"
+msgstr "Cancelar: criar nota de crédito e reconciliar"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/wizard/account_invoice_cancel.py:19
+#, python-format
+msgid "Cannot cancel an invoice if the user hasn't declared that they have the original."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/res_partner.py:28
+#, python-format
+msgid "Cannot change VAT for already invoiced partner"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:72
+#, python-format
+msgid "Cannot find FaturAqui Client Token. Please update in Invoicing/Configuration/FaturAqui/Information."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:69
+#, python-format
+msgid "Cannot find FaturAqui Server URL. Please update in Invoicing/Configuration/FaturAqui/Information."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/mail_template.py:22
+#, python-format
+msgid "Cannot use Account mail template for a FaturAqui invoice. Please select a different option in Use template."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/mail_template.py:37
+#, python-format
+msgid "Cannot use FaturAqui mail template for a non-FaturAqui invoice. Please select a different option in Use template."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:153
+#, python-format
+msgid "Cannot use this year."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__at_cash_vat_scheme_indicator
+msgid "Cash VAT Scheme Indicator"
+msgstr "Indicador de regime de IVA de Caixa"
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.actions.act_window,help:tko_faturaqui_client.action_account_invoice_series
+msgid "Click to add a new invoice series."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__client_token
+msgid "Client Token"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:102
+#, python-format
+msgid "Confirmed having kept the invoice's original"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__copies
+msgid "Copies"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__create_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__create_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__create_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__create_uid
+msgid "Created by"
+msgstr "Criado por"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__create_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__create_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__create_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__create_date
+msgid "Created on"
+msgstr "Criada em"
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_account_invoice_refund
+msgid "Credit Note"
+msgstr "Nota de Crédito"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:35
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "December"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__default_customer_at_self_billing_indicator
+msgid "Default Customer Self-Billing Indicator"
+msgstr "Padrão em Cliente para Indicador de autofaturação"
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.faturaqui_form
+msgid "Default Fields"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__default_invoice_at_cash_vat_scheme_indicator
+msgid "Default Invoice Cash VAT Scheme Indicator"
+msgstr "Padrão em Fatura para Indicador de regime de IVA de Caixa"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__default_invoice_at_self_billing_indicator
+msgid "Default Invoice Self-Billing Indicator"
+msgstr "Padrão em Fatura para Indicador de autofaturação"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__default_invoice_at_third_parties_billing_indicator
+msgid "Default Invoice Third Parties Billing Indicator"
+msgstr "Padrão em Fatura para Indicador de faturação emitida em nome e por conta de terceiros"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice_line__at_settlement_amount
+msgid "Deve refletir todos os descontos concedidos (a proporção dos descontos globais para esta linha afetam o valor do campo 4.1.4.20.3. – Total do documento com impostos (GrossTotal)."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__display_name
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__display_name
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__display_name
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__display_name
+msgid "Display Name"
+msgstr "Nome a Exibir"
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "Draft. This is not a credit note yet"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "Draft. This is not an invoice yet"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice,copies:0
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:11
+#, python-format
+msgid "Duplicated"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_mail_template
+msgid "Email Templates"
+msgstr "Modelos de E-mail"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_line__tax0_reason_id
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__at_tax0_reason
+msgid "Exemption Reason"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/mail_template.py:35
+#, python-format
+msgid "Failed to load Invoice Attachment. Please select one."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_faturaqui
+#: model:ir.model,name:tko_faturaqui_client.model_faturaqui
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_faturaqui
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.faturaqui_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_partner_property_form
+msgid "FaturAqui"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_faturaqui_saft_annual
+msgid "FaturAqui File SAF-T"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_faturaqui_saft_monthly
+msgid "FaturAqui File eFatura"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_faturaqui_saft
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.faturaqui_saft_form
+msgid "FaturAqui SAF-T"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:100
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:278
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:346
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:143
+#, python-format
+msgid "FaturAqui Server Error: %serrormessage"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:25
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "February"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__file
+msgid "File"
+msgstr "Ficheiro"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__filename
+msgid "Filename"
+msgstr "Nome de ficheiro"
+
+#. module: tko_faturaqui_client
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_action_faturaqui_saft_annual
+msgid "Files SAF-T"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_action_faturaqui_saft_monthly
+msgid "Files eFatura"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.faturaqui_saft_form
+msgid "Generate File"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "I confirm that I have the original document with me and I want to print the original again:"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "I confirm that I have the original document with me, I will not give it to the client"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.account_invoice_cancel_form
+msgid "I declare that I have the original of this invoice in my possession:"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__id
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__id
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__id
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__id
+msgid "ID"
+msgstr "Id."
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:56
+#: model:ir.model.fields,help:tko_faturaqui_client.field_faturaqui__default_invoice_at_self_billing_indicator
+#, python-format
+msgid "If not set here, it will be set on every invoice from its customer's default."
+msgstr "Se não for definido aqui, será definido em todas as faturas do padrão do cliente."
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_product_product__at_product_type
+#: model:ir.model.fields,help:tko_faturaqui_client.field_product_template__at_product_type
+msgid "Indicador de produto ou serviço"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:35
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice__at_self_billing_indicator
+#, python-format
+msgid "Indicator of self-billing.\n"
+"The field shall be filled in with 'Yes' if it concerns self-billing otherwise with 'No'."
+msgstr "Indicador de autofaturação.\nDeve ser preenchido com 'Sim' se respeitar a autofaturação e com 'Não' no caso contrário."
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/res_partner.py:18
+#: model:ir.model.fields,help:tko_faturaqui_client.field_res_partner__at_self_billing_indicator
+#: model:ir.model.fields,help:tko_faturaqui_client.field_res_users__at_self_billing_indicator
+#, python-format
+msgid "Indicator of the existence of a self-billing agreement between the customer and the supplier.\n"
+"The field shall be filled in with 'Yes' if there is an agreement and with 'No' if there is not one."
+msgstr "Indicador da existência de acordo de autofaturação entre o cliente e o fornecedor.\nDeve ser preenchido com 'Sim' se houver acordo e com 'Não' no caso contrário."
+
+#. module: tko_faturaqui_client
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_action_faturaqui
+msgid "Information"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.journal,at_type_out_invoice:0
+#: model:ir.model,name:tko_faturaqui_client.model_account_invoice
+msgid "Invoice"
+msgstr "Fatura"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__invoice_attachment_id
+msgid "Invoice Attachment"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Linha da Fatura"
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_account_invoice_series
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_action_account_invoice_series
+msgid "Invoice Series"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account.py:46
+#, python-format
+msgid "Invoice Series must have a Dedicated Credit Note Sequence."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:mail.message.subtype,description:tko_faturaqui_client.mt_invoice_cancelled
+#: model:mail.message.subtype,name:tko_faturaqui_client.mt_invoice_cancelled
+msgid "Invoice cancelled"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:24
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "January"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_account_journal
+msgid "Journal"
+msgstr "Diário"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:30
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "July"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:29
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "June"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel____last_update
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er____last_update
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui____last_update
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft____last_update
+msgid "Last Modified on"
+msgstr "Última Modificação em"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__write_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__write_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__write_uid
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__write_uid
+msgid "Last Updated by"
+msgstr "Última Atualização por"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__write_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__write_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__write_date
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__write_date
+msgid "Last Updated on"
+msgstr "Última Atualização em"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:26
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "March"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:28
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "May"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice.refund,filter_refund:0
+msgid "Modify: create credit note, reconcile and create a new draft invoice"
+msgstr "Modificar: criar nota de crédito, reconciliar e criar um novo rascunho de fatura"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__month
+msgid "Month"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:faturaqui.saft,type:0
+msgid "Monthly"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__name
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__name
+msgid "Name"
+msgstr "Nome"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_product__has_tax0
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_template__has_tax0
+msgid "Needs Tax Exemption Reason"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice,at_cash_vat_scheme_indicator:0
+#: selection:account.invoice,at_self_billing_indicator:0
+#: selection:account.invoice,at_third_parties_billing_indicator:0
+#: selection:faturaqui,default_customer_at_self_billing_indicator:0
+#: selection:faturaqui,default_invoice_at_cash_vat_scheme_indicator:0
+#: selection:faturaqui,default_invoice_at_self_billing_indicator:0
+#: selection:faturaqui,default_invoice_at_third_parties_billing_indicator:0
+#: selection:res.partner,at_self_billing_indicator:0
+msgid "No"
+msgstr "Não"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:34
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "November"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:33
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "October"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__original_kept
+msgid "Original Kept"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__reason_original
+msgid "Original Reason"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account_tax.py:53
+#, python-format
+msgid "Please add the article paragraph in the exemption reason."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice_line__at_unit_price
+msgid "Preço unitário deduzido dos descontos de linha e cabeçalho, sem incluir impostos."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "Print"
+msgstr "Imprimir"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__print_original
+msgid "Print Original"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__print_url
+msgid "Print URL"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "Printing Options"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_product_product
+msgid "Product"
+msgstr "Artigo"
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_product_template
+msgid "Product Template"
+msgstr "Modelo de Artigo"
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice,copies:0
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:13
+#, python-format
+msgid "Quadruplicated"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_cancel__reason
+msgid "Reason"
+msgstr "Motivo"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_journal__refund_code
+msgid "Refund Code"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice_refund__filter_refund
+msgid "Refund Method"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice_refund__filter_refund
+msgid "Refund base on this type. You can not Modify and Cancel if the invoice is already reconciled"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_ir_actions_report
+msgid "Report Action"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__at_self_billing_indicator
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_res_partner__at_self_billing_indicator
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_res_users__at_self_billing_indicator
+msgid "Self-Billing Indicator"
+msgstr "Indicador de autofaturação"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:32
+#: selection:faturaqui.saft,month:0
+#, python-format
+msgid "September"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_journal__series
+msgid "Series"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_ir_actions_server
+msgid "Server Action"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__server_message
+msgid "Server Message"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__server_reference
+msgid "Server Reference"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__server_url
+msgid "Server URL"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_journal__code
+msgid "Short Code"
+msgstr "Código Abreviado"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/account_invoice.py:47
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice__at_third_parties_billing_indicator
+#, python-format
+msgid "Should be filled in with 'Yes' for invoices issued on behalf of third persons and with 'No' if not."
+msgstr "Deve ser preenchido com 'Sim' se respeitar a faturação emitida em nome e por conta de terceiros e com 'Não' no caso contrário."
+
+#. module: tko_faturaqui_client
+#: selection:account.journal,at_type_out_invoice:0
+msgid "Simplified Invoice"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__software_certificate_number
+msgid "Software Certificate Number"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__name
+msgid "Software Name"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__version
+msgid "Software Version"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.journal,at_origin:0
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:17
+#, python-format
+msgid "System"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_account_tax
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_tax_er__tax_id
+msgid "Tax"
+msgstr "Imposto"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_product__tax0_reason_id
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_product_template__tax0_reason_id
+msgid "Tax Exemption Reason"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.actions.act_window,name:tko_faturaqui_client.action_account_tax_er
+#: model:ir.model,name:tko_faturaqui_client.model_account_tax_er
+#: model:ir.ui.menu,name:tko_faturaqui_client.menu_account_tax_er
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.account_tax_er_form
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.account_tax_er_tree
+msgid "Tax Exemption Reasons"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model,name:tko_faturaqui_client.model_account_tax_template
+msgid "Templates for Taxes"
+msgstr "Modelos para Impostos"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_journal__code
+msgid "The journal entries of this journal will be named using this code."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_journal__refund_code
+msgid "The refund entries of this journal will be named using this code."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_account_invoice__at_third_parties_billing_indicator
+msgid "Third Parties Billing Indicator"
+msgstr "Indicador de faturação emitida em nome e por conta de terceiros"
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:53
+#: model:ir.model.fields,help:tko_faturaqui_client.field_faturaqui__default_customer_at_self_billing_indicator
+#, python-format
+msgid "This value will be set on every new customer."
+msgstr "Este valor será definido em todos os novos clientes."
+
+#. module: tko_faturaqui_client
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:60
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:63
+#: model:ir.model.fields,help:tko_faturaqui_client.field_faturaqui__default_invoice_at_cash_vat_scheme_indicator
+#: model:ir.model.fields,help:tko_faturaqui_client.field_faturaqui__default_invoice_at_third_parties_billing_indicator
+#, python-format
+msgid "This value will be set on every new invoice."
+msgstr "Este valor será definido em cada nova fatura."
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,help:tko_faturaqui_client.field_account_invoice__at_invoice_type
+msgid "Tipo de documento"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice,copies:0
+#: code:addons/tko_faturaqui_client/models/faturaqui.py:12
+#, python-format
+msgid "Triplicated"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui__use_webservice
+msgid "Use Webservice"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_account_invoice_refund
+msgid "Use this option if you want to cancel an invoice and create a new\n"
+"                        one. The credit note will be created, validated and reconciled\n"
+"                        with the current invoice. A new draft invoice will be created\n"
+"                        so that you can edit it."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.view_account_invoice_refund
+msgid "Use this option if you want to cancel an invoice you should not\n"
+"                        have issued. The credit note will be created, validated and reconciled\n"
+"                        with the invoice. You will not be able to modify the credit note."
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: model_terms:ir.ui.view,arch_db:tko_faturaqui_client.invoice_form
+msgid "Validate"
+msgstr "Validar"
+
+#. module: tko_faturaqui_client
+#: model:ir.model.fields,field_description:tko_faturaqui_client.field_faturaqui_saft__year
+msgid "Year"
+msgstr ""
+
+#. module: tko_faturaqui_client
+#: selection:account.invoice,at_cash_vat_scheme_indicator:0
+#: selection:account.invoice,at_self_billing_indicator:0
+#: selection:account.invoice,at_third_parties_billing_indicator:0
+#: selection:faturaqui,default_customer_at_self_billing_indicator:0
+#: selection:faturaqui,default_invoice_at_cash_vat_scheme_indicator:0
+#: selection:faturaqui,default_invoice_at_self_billing_indicator:0
+#: selection:faturaqui,default_invoice_at_third_parties_billing_indicator:0
+#: selection:res.partner,at_self_billing_indicator:0
+msgid "Yes"
+msgstr "Sim"
