@@ -1,4 +1,8 @@
-docker exec -it --user=root odoo python3 -m pip install numpy
+vat_check_vies
+res.config.settings
+
+{help:"",name: "vat_check_vies",readonly:false,required:false,searchable:false,sortable:false,store:false,string:"Vat Vies",type:"boolean"}
+
 
 https://hub.docker.com/_/odoo
 
